@@ -1,0 +1,107 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="searchForm">
+        <form #form="ngForm" (submit)="onSearch()">
+          <input
+            type="text"
+            placeholder="search city"
+            name="city"
+            [(ngModel)]="cityName"
+            autocomplete="off"
+          />
+          <button class="btn btn-primary goBtn mt-2" (click)="onGetClick()">
+            Get
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="card weather-container">
+        <div class="upper-data">
+          <img
+            src="../../../assets/images/cloudy.png"
+            class="card-img-top"
+            alt="weather_image"
+            *ngIf="14 > 15"
+          />
+          <img
+            src="../../../assets/images/sun.png"
+            class="card-img-top"
+            alt="weather_image"
+            *ngIf="14 <= 15"
+          />
+
+          <div class="weather-data">
+            <div class="location">
+              {{ weatherData != null ? weatherData.name : "" }}
+            </div>
+            <div class="temperature">
+              {{
+                weatherData != null
+                  ? (weatherData.main.temp - 273 | number : "1.0-0")
+                  : ""
+              }}
+              °C
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body lower-data">
+          <div class="more-info-label">More Information</div>
+          <div class="more-info-container">
+            <div class="info-block">
+              <div class="info-block-label">
+                <img src="../../../assets/images/cold.png" alt="" />
+                <span>min</span>
+              </div>
+              <div class="info-block-value">
+                {{
+                  weatherData != null
+                    ? (weatherData.main.temp_min - 273 | number : "1.2-2")
+                    : ""
+                }}
+                °c
+              </div>
+            </div>
+
+            <div class="info-block">
+              <div class="info-block-label">
+                <img src="../../../assets/images/hot.png" alt="" />
+                <span>max</span>
+              </div>
+              <div class="info-block-value">
+                {{
+                  weatherData != null
+                    ? (weatherData.main.temp_max - 273 | number : "1.2-2")
+                    : ""
+                }}
+                °c
+              </div>
+            </div>
+
+            <div class="info-block">
+              <div class="info-block-label">
+                <img src="../../../assets/images/humidity.png" alt="" />
+                <span>humidity</span>
+              </div>
+              <div class="info-block-value">
+                {{ weatherData != null ? weatherData.main.humidity : "" }}%
+              </div>
+            </div>
+
+            <div class="info-block">
+              <div class="info-block-label">
+                <img src="../../../assets/images/wind.png" alt="" />
+                <span>wind</span>
+              </div>
+              <div class="info-block-value">
+                {{ weatherData != null ? weatherData.wind.speed : "" }} km/h
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
