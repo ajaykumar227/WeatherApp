@@ -10,7 +10,11 @@
             [(ngModel)]="cityName"
             autocomplete="off"
           />
-          <button class="btn btn-primary goBtn mt-2" (click)="onGetClick()">
+          <button
+            class="btn btn-primary goBtn mt-2"
+            (click)="onGetClick()"
+            [disabled]="!cityName"
+          >
             Get
           </button>
         </form>
@@ -20,16 +24,16 @@
       <div class="card weather-container">
         <div class="upper-data">
           <img
-            src="../../../assets/images/cloudy.png"
-            class="card-img-top"
-            alt="weather_image"
-            *ngIf="14 > 15"
-          />
-          <img
             src="../../../assets/images/sun.png"
             class="card-img-top"
             alt="weather_image"
-            *ngIf="14 <= 15"
+            *ngIf="weatherData.main.temp - 273 > 15"
+          />
+          <img
+            src="../../../assets/images/cloudy.png"
+            class="card-img-top"
+            alt="weather_image"
+            *ngIf="weatherData.main.temp - 273 <= 15"
           />
 
           <div class="weather-data">
