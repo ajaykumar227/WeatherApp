@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class WeatherService {
 
-  // https://api.openweathermap.org/data/2.5/weather?q=london&appid=643faf4b208f48e19ca30334135c1b7f
   baseUrl = 'https://api.openweathermap.org/data/2.5/';
   weatherEndPoint = 'weather'
   apiKey = '643faf4b208f48e19ca30334135c1b7f';
